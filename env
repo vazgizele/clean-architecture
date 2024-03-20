@@ -1,0 +1,6 @@
+DB_HOST="academystage.mysql.dbaas.com.br"
+DB_USER="academystage" 
+DB_PASSWORD="ME5dnNv@E47AzBQ" 
+DB_NAME="academystage"
+DB_PORT="3306"
+DB_DRIVER="mysql+mysqlconnector"
