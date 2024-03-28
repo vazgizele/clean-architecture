@@ -80,3 +80,25 @@ class TestAtendente:
             
         # Assert
         assert str(error.value) == f"data_nascimento must be a date. [value={atendente.data_nascimento}]"
+    
+    def test_phone_is_not_string(self):
+        #Arrange
+        atendente = Atendente(1, "gizele", date.today(), 21990724754, 21990724754, "gizele.costa@transfero.com")
+
+        # Act
+        with pytest.raises(Exception) as error:
+            atendente.validade()
+            
+        # Assert
+        assert str(error.value) == f"telefone1 must be a string. [value={atendente.telefone1}]"
+    
+    def test_phone_is_not_format(self):
+        #Arrange
+        atendente = Atendente(1, "gizele", date.today(), '*90724754', '*90724754', "gizele.costa@transfero.com")
+
+        # Act
+        with pytest.raises(Exception) as error:
+            atendente.validade()
+            
+        # Assert
+        assert str(error.value) == f'telefone1 must be in format [123456789], [value={atendente.telefone1}]'
