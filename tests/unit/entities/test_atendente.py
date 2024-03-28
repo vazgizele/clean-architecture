@@ -94,7 +94,7 @@ class TestAtendente:
     
     def test_phone_is_not_format(self):
         #Arrange
-        atendente = Atendente(1, "gizele", date.today(), '*90724754', '*90724754', "gizele.costa@transfero.com")
+        atendente = Atendente(1, "gizele", date.today(), '*90724754', None, "gizele.costa@transfero.com")
 
         # Act
         with pytest.raises(Exception) as error:

@@ -18,6 +18,12 @@ class Atendente:
     def validade(self):
         IntValidator.validate(value=self.id, field_name="id")
         StringValidator.validate(value=self.nome, field_name="nome", exact_length=0, min_length=3, max_length=30)
+        self.nome = self.nome.strip()
+
         DateValidator.validate(value=self.data_nascimento, field_name="data_nascimento")
         PhoneValidator.validate(value=self.telefone1, field_name="telefone1")
+        
+        if self.telefone2 != None:
+            PhoneValidator.validate(value=self.telefone1, field_name="telefone2")
+
         EmailValidator.validate(value=self.email, field_name="email")
