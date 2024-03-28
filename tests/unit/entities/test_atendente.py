@@ -135,3 +135,29 @@ class TestAtendente:
             
         # Assert
         assert str(error.value) == f"email must be in format [User@Domain.com.br[br=Optional], [value={atendente.email}]"
+
+    @pytest.mark.parametrize("id, nome, data_nascimento, telefone1, telefone2, email, msg_expected", [
+       ("abc", "gizele", "18/01/1993", "21990724754", "21990724754", "gizele.costa@transfero.com", 'id must be a integer. [value=abc]' ),
+       (-1, "gizele", "18/01/1993", "21990724754", "21990724754", "gizele.costa@transfero.com", 'id must be a positive integer. [value=-1]'),
+       (1, 123, "18/01/1993", "21990724754", "21990724754", "gizele.costa@transfero.com", "nome must be a string. [value=123]"),
+       (1, "", "18/01/1993", "21990724754", "21990724754", "gizele.costa@transfero.com", "nome must not be empty."),
+       (1, "ab", "18/01/1993", "21990724754", "21990724754", "gizele.costa@transfero.com",'nome minimum size is - 3'),
+       (1, "gizele"*6, "18/01/1993", "21990724754", "21990724754", "gizele.costa@transfero.com",'nome maximum size is - 30'),
+       (1, "gizele", 123, "21990724754", "21990724754", "gizele.costa@transfero.com","data_nascimento must be a date. [value=123]"),
+       (1, "gizele", date.today(), 21990724754, 21990724754, "gizele.costa@transfero.com", "telefone1 must be a string. [value=21990724754]"),
+       (1, "gizele", date.today(), '*90724754', None, "gizele.costa@transfero.com",'telefone1 must be in format [123456789], [value=*90724754]'),
+       (1, "gizele", date.today(), '21990724754', '21990724754', None,"invalid E-mail. [value=]"),
+       (1, "gizele", date.today(), '21990724754', '21990724754',123456789,"email must be a string. [value=123456789]"),
+       (1, "gizele", date.today(), '21990724754', '21990724754',"gizele.costa@.com","email must be in format [User@Domain.com.br[br=Optional], [value=gizele.costa@.com]")
+      
+    ])
+    def test_all(self, id, nome, data_nascimento, telefone1, telefone2, email, msg_expected):
+        # Arrange
+        atendente = Atendente(id, nome, data_nascimento, telefone1, telefone2, email)
+
+        # Act
+        with pytest.raises(Exception) as error:
+            atendente.validade()
+            
+        # Assert
+        assert str(error.value) == msg_expected
