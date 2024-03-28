@@ -1,6 +1,7 @@
-from src.domain.entities.atendente import Atendente
 from datetime import date
 import pytest
+
+from src.domain.entities.atendente import Atendente
 class TestAtendente:
     #id: int
     def test_id_not_is_integer(self):
@@ -68,3 +69,14 @@ class TestAtendente:
             
         # Assert
         assert str(error.value) == f'nome maximum size is - 30'
+    
+    def test_date_is_not_ok(self):
+        #Arrange
+        atendente = Atendente(1, "gizele", 123, "21990724754", "21990724754", "gizele.costa@transfero.com")
+
+        # Act
+        with pytest.raises(Exception) as error:
+            atendente.validade()
+            
+        # Assert
+        assert str(error.value) == f"data_nascimento must be a date. [value={atendente.data_nascimento}]"
