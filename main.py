@@ -1,7 +1,9 @@
-from dotenv import load_dotenv
+from fastapi import FastAPI
 
-from src.infra.adapters.db_config.db_config import DbConfig
+from src.application.execute_webapp import execute_webapp
 
-if __name__ == 'main':
-    load_dotenv()
-    db_config = DbConfig()
+
+if __name__ == "__main__":
+    execute_webapp()
+ 
+  

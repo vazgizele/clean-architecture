@@ -11,5 +11,3 @@ class GetAtendenteService:
     @staticmethod
     def execute(db_conn: IDbHandler, repo: IAtendenteRepository, id: int)->AtendenteResponseService:
        return repo.get(id)
-
-        
