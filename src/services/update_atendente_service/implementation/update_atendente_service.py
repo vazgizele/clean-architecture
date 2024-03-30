@@ -1,8 +1,8 @@
 from dataclasses import dataclass
 
+from src.services.update_atendente_service.DTOs.update_atendente_request_service import UpdateAtendenteRequestService
 from src.infra.repositories.iatentende_repository import IAtendenteRepository
 from src.infra.repositories.atendente_repository import AtendenteRepository
-from src.services.update_atendente_service.DTO.update_atendente_request_service import UpdateAtendenteRequestService
 from src.infra.adapters.db_handler.idb_handler import IDbHandler
 
 

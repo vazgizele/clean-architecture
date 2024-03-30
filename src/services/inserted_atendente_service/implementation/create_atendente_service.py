@@ -1,10 +1,10 @@
 from dataclasses import dataclass
 
+from src.services.inserted_atendente_service.DTO.create_atendente_request import CreateAtendenteRequestService
+from src.services.inserted_atendente_service.DTO.create_atendente_response import CreateAtendenteResponseService
 from src.infra.adapters.db_handler.idb_handler import IDbHandler
 from src.domain.entities.atendente import Atendente
 from src.infra.repositories.iatentende_repository import IAtendenteRepository
-from src.services.inserted_atendente_service.implementation.DTO.create_atendente_request import CreateAtendenteRequestService
-from src.services.inserted_atendente_service.implementation.DTO.create_atendente_response import CreateAtendenteResponseService
 
 
 @dataclass

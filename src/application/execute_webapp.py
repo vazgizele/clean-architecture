@@ -4,21 +4,19 @@ import uvicorn
 
 from .db_config import DbConfig
 from src.infra.adapters.db_handler.db_handler import DbHandler
+from src.infra.ORM.mappers.start_mappers import start_mappers
+from src.infra.repositories.atendente_repository import AtendenteRepository
 
-from src.services.update_atendente_service.DTO.update_atendente_request_service import UpdateAtendenteRequestService
 from src.services.update_atendente_service.implementation.update_atendente_service import UpdateAtendenteService
 from src.services.get_atendente_service.implementation.get_atendente_service import GetAtendenteService
-
-from src.controllers.atendente.DTOS.get_atendente_response import GetAtendenteResponse
-from src.controllers.atendente.DTOS.create_atendente_request import CreateAtendenteRequest
-from src.controllers.atendente.DTOS.inserted_atendente_response import InsertedAtendenteResponse
-from src.controllers.atendente.DTOS.update_atendente_request import UpdateAtendenteRequest
-
-from src.services.inserted_atendente_service.implementation.create_atendente_service import CreateAtendenteService
-
-from src.infra.repositories.atendente_repository import AtendenteRepository
-from src.infra.ORM.mappers.start_mappers import start_mappers
 from src.services.delete_atendente_service.implementation.delete_atendente_service import DeleteAtendenteService
+from src.services.inserted_atendente_service.implementation.create_atendente_service import CreateAtendenteService
+from src.services.update_atendente_service.DTOs.update_atendente_request_service import UpdateAtendenteRequestService
+
+from src.controllers.atendente.DTOs.create_atendente_request import CreateAtendenteRequest
+from src.controllers.atendente.DTOs.get_atendente_response import GetAtendenteResponse
+from src.controllers.atendente.DTOs.inserted_atendente_response import InsertedAtendenteResponse
+from src.controllers.atendente.DTOs.update_atendente_request import UpdateAtendenteRequest
 
 app = FastAPI(title='webapp_settings.title', 
               version='webapp_settings.version',
