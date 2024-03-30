@@ -1,8 +1,8 @@
 from abc import ABC
 from typing import List
 
-from domain.entities.atendente import Atendente
-from infra.adapters.db_handler.idb_handler import IDbHandler
+from src.domain.entities.atendente import Atendente
+from src.infra.adapters.db_handler.idb_handler import IDbHandler
 
 class IAtendenteRepository(ABC):
     def __init__(self, db: IDbHandler):
@@ -22,4 +22,3 @@ class IAtendenteRepository(ABC):
     
     def delete(self, id: int) -> None:
         raise Exception("Not Implemented")
-    
