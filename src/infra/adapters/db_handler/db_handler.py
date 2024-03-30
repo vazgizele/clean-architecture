@@ -8,6 +8,7 @@ from .idb_handler import IDbHandler
 class DbHandler(IDbHandler):
     db_path: str
     db_timeout: str
+    session: Session
     
     def __init__(self, db_path: str, db_timeout:int=300):
         self.db_path=db_path
@@ -24,7 +25,7 @@ class DbHandler(IDbHandler):
         self.session.close()
 
     def open(self) -> None:
-        self.engine = create_engine(self.db_path, echo=True, hide_parameters=False, connect_args={"options": f"-c statement_timeout={self.db_timeout}"})
+        self.engine = create_engine(self.db_path, echo=True, hide_parameters=False, 
+        connect_args={"connect_timeout": self.db_timeout} )
         self.session_maker = sessionmaker()
         self.session = self.session_maker(bind=self.engine)
-    
