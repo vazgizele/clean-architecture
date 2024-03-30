@@ -1,7 +1,7 @@
 from sqlalchemy import BigInteger, Column, Identity, Table, VARCHAR, String, DATE
 from sqlalchemy.exc import ArgumentError
 
-from domain.entities.atendente import Atendente
+from src.domain.entities.atendente import Atendente
 
 
 def atentende_mapper(mapper):
@@ -20,4 +20,4 @@ def atentende_mapper(mapper):
     try:
         mapper.map_imperatively(Atendente, atendente_schema)
     except ArgumentError:
-        pass
+        return "Ocorreu um erro"
