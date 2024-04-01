@@ -1,5 +1,6 @@
 from dataclasses import dataclass
 from datetime import date
+from typing import Optional
 from src.domain.validators.email_validator import EmailValidator
 from src.domain.validators.phone_validator import PhoneValidator
 from src.domain.validators.date_validator import DateValidator
@@ -12,7 +13,7 @@ class Atendente:
     nome: str =''
     data_nascimento: date = date.today()
     telefone1: str = ''
-    telefone2: str = ''
+    telefone2: Optional[str] = None
     email: str = ''
 
     def validade(self):
