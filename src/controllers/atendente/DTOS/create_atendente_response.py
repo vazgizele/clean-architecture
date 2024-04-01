@@ -3,7 +3,7 @@ from datetime import date
 
 
 @dataclass
-class InsertedAtendenteResponse:
+class CreateAtendenteResponse:
     id: int
     nome: str
     data_nascimento: date

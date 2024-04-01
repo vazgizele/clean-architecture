@@ -7,11 +7,12 @@ from src.infra.repositories.iatentende_repository import IAtendenteRepository
 @dataclass
 class DeleteAtendenteService:
     @staticmethod
-    def execute(db_conn: IDbHandler, repo: IAtendenteRepository, id: int=0) -> str:
+    def execute(db_conn: IDbHandler, repo: IAtendenteRepository, id: int) -> str:
         atendente = repo.get(id)
         
         if not atendente:
             return f'Atentende não existe [Id={id}]'
-        repo.delete(id)
+        
+        repo.delete(atendente.id)
 
-        return 'Ok'
+        return 'OK'

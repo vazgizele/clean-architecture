@@ -3,7 +3,7 @@ from datetime import date
 
 
 @dataclass
-class CreateAtendenteResponseService():
+class CreateAtendenteResponseService:
     msg: str = 'OK'
     id: int = 0
     nome: str = ''
