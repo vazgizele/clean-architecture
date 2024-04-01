@@ -17,6 +17,9 @@ class IAtendenteRepository(ABC):
     def get_byname(self, name: str) -> Atendente:
         raise Exception("Not Implemented")
     
+    def get_byemail(self, email: str) -> Atendente:
+        raise Exception("Not Implemented")
+    
     def add(self, new: Atendente) -> None:
         raise Exception("Not Implemented")
     

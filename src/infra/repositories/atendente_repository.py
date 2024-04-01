@@ -16,6 +16,9 @@ class  AtendenteRepository(IAtendenteRepository):
     def get_byname(self, nome: str) -> Atendente:
         return self.session.query(Atendente).filter_by(nome=nome).first()
     
+    def get_byemail(self, email: str) -> Atendente:
+        return self.session.query(Atendente).filter_by(email=email).first()
+    
     def add(self, new: Atendente) -> None:
         new.validade()
         new.id = None
