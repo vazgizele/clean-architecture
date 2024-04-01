@@ -17,5 +17,3 @@ class ListAllAtendenteService:
             ret.append(ListAllAtendenteResponseService(item.id, item.nome, item.data_nascimento, item.telefone1, item.telefone2, item.email))
         
         return ret
-
-        
